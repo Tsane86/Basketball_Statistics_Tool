@@ -46,7 +46,7 @@ def menu():
     print('A) Display Team Statistics')
     print('B) Exit \n')
 
-    menuChoice = input('Enter an option > \n')
+    menuChoice = input('Enter an option : \n')
     if menuChoice.lower() == 'a':
         stats_menu()
     elif menuChoice.lower() == 'b':
