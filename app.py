@@ -36,13 +36,13 @@ def join_names_from_teams(team):
 
 def print_team(team):
     print(f'Team: {team} Stats')
-    print('-----------------')
+    print('--------------------')
     print('Total players: ', len(balancedTeams[team]))
     print('Players on team: ', join_names_from_teams(team) + '\n')
 
 def menu():
     print('Basketball Team Statistics Tool')
-    print('-------------------------')
+    print('--------------------')
     print('A) Display Team Statistics')
     print('B) Exit \n')
 
@@ -53,7 +53,7 @@ def menu():
         print('Exiting...')
         exit()
     else:
-        print('Invalid input, please try again \n')
+        print('Incorrect input, please try again \n')
         menu()
 
 
@@ -62,7 +62,7 @@ def stats_menu():
     print(f'B: {TEAMS[1]} Statistics')
     print(f'C: {TEAMS[2]} Statistics')
     print(f'D: Exit')
-    statsChoice = input('Enter an option : ')
+    statsChoice = input('Enter an option: ')
     if statsChoice.lower() == 'a':
         print('\n')
         print_team(TEAMS[0])
