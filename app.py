@@ -10,21 +10,19 @@ def clean_data():
 
 
 def balance_teams(TEAMS, PLAYERS):
-    teamPlayers = {}
-    for team in TEAMS:
-        teamPlayers[team] = []
+    teamPlayers = {'Panthers': [], 'Bandits': [], 'Warriors': []}
     for player in PLAYERS:
         
-        if len(teamPlayers[TEAMS[0]]) > len(teamPlayers[TEAMS[1]]): 
+        if len(teamPlayers['Panthers']) > len(teamPlayers['Bandits']): 
             # if team 1 has more players than team 2
-            teamPlayers[TEAMS[1]].append(player)
+            teamPlayers['Bandits'].append(player)
         
-        elif len(teamPlayers[TEAMS[1]]) > len(teamPlayers[TEAMS[2]]): 
+        elif len(teamPlayers['Bandits']) > len(teamPlayers['Warriors']): 
             # if team 2 has more players than team 3
-            teamPlayers[TEAMS[2]].append(player)
+            teamPlayers['Warriors'].append(player)
         
         else:
-            teamPlayers[TEAMS[0]].append(player)    
+            teamPlayers['Panthers'].append(player)    
             # if team 1 has less players than team 2 and team 3
     return teamPlayers
 
