@@ -62,7 +62,7 @@ def stats_menu():
     print(f'B: {TEAMS[1]} Statistics')
     print(f'C: {TEAMS[2]} Statistics')
     print(f'D: Exit')
-    statsChoice = input('Enter an option > ')
+    statsChoice = input('Enter an option : ')
     if statsChoice.lower() == 'a':
         print('\n')
         print_team(TEAMS[0])
