@@ -5,7 +5,8 @@ def clean_data():
     cleaned_data = []
     for teamPlayer in PLAYERS:
         teamPlayer['height'] = int(teamPlayer['height'][:2]) # remove the 'in' from the height
-        cleaned_data.append(teamPlayer) 
+        teamPlayer['experience'] = True if teamPlayer['experience'] == 'YES' else False # convert to boolean
+        cleaned_data.append(teamPlayer)
     return cleaned_data
 
 
@@ -60,26 +61,29 @@ def stats_menu():
     print(f'B: {TEAMS[1]} Statistics')
     print(f'C: {TEAMS[2]} Statistics')
     print(f'D: Exit')
-    statsChoice = input('Enter an option: ')
-    if statsChoice.lower() == 'a':
-        print('\n')
-        print_team(TEAMS[0])
+    try:
+        statsChoice = input('Enter an option: \n')
+        if statsChoice.lower() not in ['a', 'b', 'c', 'd']:
+            raise Exception('#Incorrect input, please try again \n')
+    except ValueError:
+        print('Incorrect input, please try again \n')
         stats_menu()
-    elif statsChoice.lower() == 'b':
-        print('\n')
-        print_team(TEAMS[1])
+    except Exception as err:
+        print(err)
         stats_menu()
-    elif statsChoice.lower() == 'c':
-        print('\n')
-        print_team(TEAMS[2])
-        stats_menu()
-    elif statsChoice.lower() == 'd':
-        print('\n')
-        print('Exiting...')
-        exit()
     else:
-        print('Invalid input, please try again \n')
-        stats_menu(input)
+        if statsChoice.lower() == 'a':
+            print_team(TEAMS[0])
+            stats_menu()
+        elif statsChoice.lower() == 'b':
+            print_team(TEAMS[1])
+            stats_menu()
+        elif statsChoice.lower() == 'c':
+            print_team(TEAMS[2])
+            stats_menu()
+        elif statsChoice.lower() == 'd':
+            print('Exiting...')
+            exit()
 
 def start_game():
     menu()
