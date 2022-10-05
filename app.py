@@ -64,7 +64,7 @@ def stats_menu():
     try:
         statsChoice = input('Enter an option: \n')
         if statsChoice.lower() not in ['a', 'b', 'c', 'd']:
-            raise Exception('#Incorrect input, please try again \n')
+            raise Exception('Invalid input, please try again \n')
     except ValueError:
         print('Incorrect input, please try again \n')
         stats_menu()
