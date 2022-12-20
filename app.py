@@ -6,6 +6,8 @@ def clean_data():
     for teamPlayer in PLAYERS:
         teamPlayer['height'] = int(teamPlayer['height'][:2]) # remove the 'in' from the height
         teamPlayer['experience'] = True if teamPlayer['experience'] == 'YES' else False # convert to boolean
+        #Guardian of player
+        teamPlayer['guardians'] = teamPlayer['guardians'].split(' and ') # split the guardians into a list
         cleaned_data.append(teamPlayer)
     return cleaned_data
 
@@ -34,10 +36,30 @@ def join_names_from_teams(team):
     return namesInString[:-2] # remove the last comma and space
 
 def print_team(team):
+    no_of_experienced_players = 0
+    no_of_inexperienced_players = 0
+    total_height = 0
+    guardians = []
+
+    for team_member in balancedTeams[team]:
+        if team_member['experience']:
+            no_of_experienced_players += 1
+        else:
+            no_of_inexperienced_players += 1
+        total_height += team_member['height']
+        guardians += team_member['guardians']
+
+    average_height = total_height / len(balancedTeams[team])
+
     print(f'Team: {team} Stats')
     print('--------------------')
     print('Total players: ', len(balancedTeams[team]))
     print('Players on team: ', join_names_from_teams(team) + '\n')
+    print(f'Experienced players: {no_of_experienced_players}')
+    print(f'Inexperienced players: {no_of_inexperienced_players}')
+    print(f'Average height: {average_height}')
+    print(f'Guardians: {", ".join(guardians)}\n')
+
 
 def menu():
     print('Basketball Team Statistics Tool')
