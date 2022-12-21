@@ -1,4 +1,3 @@
-from os import stat
 from constants import TEAMS, PLAYERS
 
 def clean_data():
@@ -6,7 +5,6 @@ def clean_data():
     for teamPlayer in PLAYERS:
         teamPlayer['height'] = int(teamPlayer['height'][:2]) # remove the 'in' from the height
         teamPlayer['experience'] = True if teamPlayer['experience'] == 'YES' else False # convert to boolean
-        #Guardian of player
         teamPlayer['guardians'] = teamPlayer['guardians'].split(' and ') # split the guardians into a list
         cleaned_data.append(teamPlayer)
     return cleaned_data
