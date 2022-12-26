@@ -11,20 +11,17 @@ def clean_data():
 
 
 def balance_teams(TEAMS, PLAYERS):
-    teamPlayers = {'Panthers': [], 'Bandits': [], 'Warriors': []}
+    teamPlayers = {}
+    for team in TEAMS:
+        teamPlayers[team] = []
+    #balance players betweeen teams
     for player in PLAYERS:
-        
-        if len(teamPlayers['Panthers']) > len(teamPlayers['Bandits']): 
-            # if team 1 has more players than team 2
-            teamPlayers['Bandits'].append(player)
-        
-        elif len(teamPlayers['Bandits']) > len(teamPlayers['Warriors']): 
-            # if team 2 has more players than team 3
-            teamPlayers['Warriors'].append(player)
-        
+        if len(teamPlayers[TEAMS[0]]) > len(teamPlayers[TEAMS[1]]):
+            teamPlayers[TEAMS[1]].append(player)
+        elif len(teamPlayers[TEAMS[1]]) > len(teamPlayers[TEAMS[2]]):
+            teamPlayers[TEAMS[2]].append(player)
         else:
-            teamPlayers['Panthers'].append(player)    
-            # if team 1 has less players than team 2 and team 3
+            teamPlayers[TEAMS[0]].append(player)
     return teamPlayers
 
 def join_names_from_teams(team):
